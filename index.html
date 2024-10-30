@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #C8A2C8; /* Warna lilac */
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .photo {
+            max-width: 80%; /* Batas maksimum lebar foto */
+            height: auto; /* Menjaga rasio foto */
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+        .decoration {
+            position: absolute;
+            width: 100px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Menjadi Tua!</h1>
+        <button id="surpriseBtn" onclick="showPlayMusic()">Surprise!</button>
+        <button id="playMusicBtn" onclick="playMusic()" style="display:none;">Play Musik</button>
+        <button id="greetingBtn" onclick="showGreeting()" style="display:none;">Ucapan</button>
+        <div id="greetingMessage" class="greeting"></div>
+        <button id="photoBtn" onclick="showPhotos()" style="display:none;">Tampilkan Foto</button>
+        <a href="video.html"><button id="videoBtn" style="display:none;">Tampilkan Video</button></a>
+        <div id="photoContainer" style="display:none;"></div>
+    </div>
+
+    <audio id="birthdayAudio" loop>
+        <source src="bts.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung audio.
+    </audio>
+
+    <script>
+        // Memastikan tombol surprise muncul setelah halaman selesai dimuat
+        window.onload = function() {
+            document.getElementById('surpriseBtn').style.display = 'inline-block';
+        };
+
+        function showPlayMusic() {
+            document.getElementById('playMusicBtn').style.display = 'inline-block';
+            document.getElementById('surpriseBtn').style.display = 'none';
+        }
+
+        function playMusic() {
+            var audio = document.getElementById('birthdayAudio');
+            audio.play();
+            document.getElementById('greetingBtn').style.display = 'inline-block';
+            document.getElementById('playMusicBtn').style.display = 'none';
+        }
+
+        function showGreeting() {
+            document.getElementById('greetingMessage').innerHTML = "<h2>Hai, Doaku yang baik-baik aja. Semoga sehat selalu, banyak rezeki. dan semua impianmu tercapai yaa! Terimakasih sudah hidup sampai detik ini dan tetap semangat. proud of u!</h2>";
+            document.getElementById('greetingMessage').style.display = 'block';
+
+            document.getElementById('photoBtn').style.display = 'inline-block';
+            document.getElementById('videoBtn').style.display = 'inline-block';
+            document.getElementById('greetingBtn').style.display = 'none';
+        }
+
+        function showPhotos() {
+            document.getElementById('photoContainer').innerHTML = `
+                <img src="foto_ultah.jpg" alt="Foto Ulang Tahun" class="photo fade-in">
+            `;
+            document.getElementById('photoContainer').style.display = 'block';
+            document.getElementById('photoBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
